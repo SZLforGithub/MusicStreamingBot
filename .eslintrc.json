@@ -5,11 +5,34 @@
         "es2021": true
     },
     "extends": [
-        "airbnb-base"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
         "ecmaVersion": 12
     },
+    "plugins": [
+        "react"
+    ],
     "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
     }
 }
