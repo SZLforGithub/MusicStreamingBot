@@ -22,6 +22,7 @@
   "homepage": "https://github.com/papago89/MusicStreamingBot#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
+    "express": "^4.17.1",
     "httprequest": "^0.3.0"
   },
   "devDependencies": {
