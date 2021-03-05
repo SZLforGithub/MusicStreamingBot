@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslintInit": "eslint --init",
-    "lint": "eslint src/*.js"
+    "lint": "eslint src/*.js",
+    "start": "node src/app.js"
   },
   "repository": {
     "type": "git",
