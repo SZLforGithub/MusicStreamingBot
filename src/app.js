@@ -10,13 +10,13 @@ const client = new Discord.Client({ autoReconnect: true });
 
 logger.level = 'debug';
 
-  logger.info('Connected');
-  logger.info(auth.token);
+logger.info('Connected');
+logger.info(auth.token);
 client.login(auth.token);
 client.on('ready', function(evt) {
-  logger.info('Connected');
-  logger.info('Logged in as: ');
-  logger.info(client.user.username + ' - (' + client.user.id + ')');
+    logger.info('Connected');
+    logger.info('Logged in as: ');
+    logger.info(client.user.username + ' - (' + client.user.id + ')');
 });
 
 client.on('message', (message) => {
