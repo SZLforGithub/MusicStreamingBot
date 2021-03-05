@@ -99,6 +99,8 @@ dist
 
 # DynamoDB Local files
 .dynamodb/
+# Discord Auth
+src/auth.json
 
 # TernJS port file
 .tern-port

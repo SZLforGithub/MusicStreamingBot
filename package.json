@@ -23,7 +23,8 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "express": "^4.17.1",
-    "httprequest": "^0.3.0"
+    "httprequest": "^0.3.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^7.21.0",
