@@ -12,8 +12,7 @@ class TransFormer {
         return '';
     }
 
-    getResonse(method, url, data) {
-        let resp = null;
+    getResponse(method, url, data) {
         let xhr = new XMLHttpRequest;
         xhr.open (method, url, false);
         xhr.send(data);
