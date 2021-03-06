@@ -1,23 +1,28 @@
-import { Request } from 'httprequest';
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 class TransFormer {
-  constructor() {
-  }
+    constructor() {
+    }
 
-  urlToKeyword(url) {
-	  return '';
-  }
+    urlToKeyword(url) {
+        return '';
+    }
 
-  keywordToUrl(keyword) {
-	  return '';
-  }
+    keywordToUrl(keyword) {
+        return '';
+    }
 
-  getHeaderTitle(url) {
-    new Request('POST', '/api/reservations').sendData({ venue_id: 100 }, (err, response) => {
-      if (err) throw err;
-      console.log('got response', res);
-    });
-  }
+    getResonse(method, url, data) {
+        let resp = null;
+        let xhr = new XMLHttpRequest;
+        xhr.open (method, url, false);
+        xhr.send(data);
+        return xhr.responseText;
+    }
+  
+    canHandleUrl(url) {
+        return false;
+    }
 }
 
 module.exports = TransFormer;

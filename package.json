@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslintInit": "eslint --init",
-    "lint": "eslint src/*.js",
-    "lintFix": "eslint --fix",
+    "lint": "eslint src/*",
+    "lintFix": "eslint src/* --fix",
     "start": "node src/app.js"
   },
   "repository": {
@@ -23,8 +23,8 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "express": "^4.17.1",
-    "httprequest": "^0.3.0",
-    "winston": "^3.3.3"
+    "winston": "^3.3.3",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "eslint": "^7.21.0",
