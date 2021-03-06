@@ -23,6 +23,6 @@ class StreetVoiceTransFormerImpl extends TransFormer {
 }
 
 module.exports = {
-    StreetVoiceTransFormerImpl : StreetVoiceTransFormerImpl, //export this class
-    TransFormer: TransFormer // and export parent class too!
+    StreetVoiceTransFormerImpl : StreetVoiceTransFormerImpl,
+    TransFormer: TransFormer
 };
