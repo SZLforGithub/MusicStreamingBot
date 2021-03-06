@@ -12,9 +12,9 @@ class StreetVoiceTransFormerImpl extends TransFormer {
     }
 
     keywordToUrl(keyword) {
-        let matchLink = super.getResponse('GET', encodeURI(`https://streetvoice.com/search/?q=${keyword}`), null)
+        let matchLink = super.getResponse('GET', encodeURI(`https://streetvoice.com/search/?q=${keyword}&type=song`), null)
             .match(/href="(\/.+\/songs\/[0-9]+\/)"/);
-        return matchLink == null ? null : `https://streetvoice.com${matchLink[1]}`;
+        return matchLink == null ? '' : `https://streetvoice.com${matchLink[1]}`;
     }
 
     canHandleUrl(url) {
