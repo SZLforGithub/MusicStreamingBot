@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const auth = require('./auth.json');
+const auth = require('./config.json');
 const logger = require('winston');
-const CompleteMusicRelayer = require('../src/CompleteMusicRelayer/CompleteMusicRelayer.js');
+const CompleteMusicRelayer = require('./MusicStreamingBot/CompleteMusicRelayer/CompleteMusicRelayer.js');
 
 const client = new Discord.Client({ autoReconnect: true });
 

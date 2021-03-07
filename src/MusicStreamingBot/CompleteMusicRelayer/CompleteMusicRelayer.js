@@ -1,6 +1,6 @@
-const StreetVoiceTransFormerImpl = require('../Transformer/impl/StreetVoiceTransFormerImpl.js').StreetVoiceTransFormerImpl;
-const YoutubeTransFormerImpl = require('../Transformer/impl/YoutubeTransFormerImpl.js').YoutubeTransFormerImpl;
-const SpotifyTransFormerImpl = require('../Transformer/impl/SpotifyTransFormerImpl.js').SpotifyTransFormerImpl;
+const StreetVoiceTransFormerImpl = require('./Transformer/impl/StreetVoiceTransFormerImpl.js').StreetVoiceTransFormerImpl;
+const YoutubeTransFormerImpl = require('./Transformer/impl/YoutubeTransFormerImpl.js').YoutubeTransFormerImpl;
+const SpotifyTransFormerImpl = require('./Transformer/impl/SpotifyTransFormerImpl.js').SpotifyTransFormerImpl;
 
 class RelayInfo {
     constructor() {
