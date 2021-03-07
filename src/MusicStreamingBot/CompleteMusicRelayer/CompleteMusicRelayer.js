@@ -50,7 +50,7 @@ class CompleteMusicRelayer {
             };
         });
 
-        return '```\n' + JSON.stringify(relayInfo) + '\n```';
+        return relayInfo;
     }
 }
 
