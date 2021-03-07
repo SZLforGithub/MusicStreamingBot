@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const express = require('express');
 const logger = require('winston');
 const CompleteMusicRelayer = require('./CompleteMusicRelayer/CompleteMusicRelayer.js');
 
@@ -24,14 +25,52 @@ class MusicStreamingBot {
       if (message.content.substring(0, 2) == '%%') {
         let cmd = message.content.substring(2).split(' '); //%%之後的文字以空白分開
         if (cmd[0] == 'url') {
-          channel.send('```JSON\n' + JSON.stringify(this.completeMusicRelayer.processUrl(cmd[1]), null, '  ') + '\n```');
+          channel.send(this.completeMusicRelayer.processUrl(cmd[1]).outputMessage);
         }
         else if (cmd[0] == 'keyword') {
-          channel.send('```JSON\n' + JSON.stringify(this.completeMusicRelayer.keywordToUrl(message.content.substring('%%keyword'.length)), null, '  ') + '\n```');
+          channel.send(this.completeMusicRelayer.keywordToUrl(message.content.substring('%%keyword'.length)));
+        } else if (cmd[0] == 'editInfo') {
+          if (message.reference != null) {
+            this.editMessage(message.reference.channelID, message.reference.messageID, message.content.substring('%%editInfo'.length));
+          } else {
+            let matchStr = message.content.match(/%%editInfo (.+?) (.+?) ([[\u0000-\uFFFF]+)/); // $1:channelId, $2:messageId, $3:newMessage
+            logger.info(message.referenceMessage);
+            logger.info(message);
+            if (null == matchStr || matchStr.length != 4) {
+              channel.send('please key:%%editInfo channelId messageId newMessage')
+                .then(msg => setTimeout(() => {
+                  msg.delete();
+                }, 3000));
+            } else {
+              if (matchStr[1].toLowerCase() == 'here') {
+                matchStr[1] = message.channel.id;
+              }
+              this.editMessage(matchStr[1], matchStr[2], matchStr[3]);
+            }
+          }
         }
+        setTimeout(() => {
+          message.delete()
+            .then(msg => console.log(`Deleted message from ${msg.author.username}`))
+            .catch(console.error);
+        }, 3000);
       }
-      this.client = client;
     });
+
+    this.client = client;
+  }
+
+  editMessage(channelId, messageId, newMessage) {
+    logger.info(`edit message(${messageId}) at channel(${channelId}) to:${newMessage}`)
+    this.client.channels
+      .fetch(channelId)
+      .then(channel => {
+        channel.messages.fetch({ around: messageId, limit: 1 })
+          .then(msg => {
+            const fetchedMsg = msg.first();
+            fetchedMsg.edit(newMessage);
+          });
+      })
   }
 }
 
