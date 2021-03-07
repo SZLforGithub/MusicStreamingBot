@@ -37,7 +37,7 @@ class MusicStreamingBot {
             logger.info(message.referenceMessage);
             logger.info(message);
             if (null == matchStr || matchStr.length != 4) {
-              channel.send('please key:%%editInfo channelId messageId newMessage')
+              channel.send('please key:%%editInfo channelId messageId newMessage\nor please reply the message with key:%%editInfo newMessage')
                 .then(msg => setTimeout(() => {
                   msg.delete();
                 }, 3000));
