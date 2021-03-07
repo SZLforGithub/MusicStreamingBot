@@ -13,9 +13,15 @@ class TransFormer {
         return '';
     }
 
-    getResponse(method, url, data) {
+    getResponse(method, url, data, accessToken) {
         let xhr = new XMLHttpRequest;
         xhr.open(method, url, false);
+        xhr.withCredentials = true;
+
+        if (accessToken) {
+            xhr.setRequestHeader("authorization", accessToken);
+        }
+
         xhr.send(data);
         return xhr.responseText;
     }
