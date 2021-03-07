@@ -15,7 +15,7 @@ docker-compose up
 ├── server.js  
 └── src  
 ....├── app.js  
-....├── **[config.json](#config.json)**  
+....├── **[config.json](#configjson)**  
 ....└── MusicStreamingBot  
 ........├── CompleteMusicRelayer  
 ........│...├── **CompleteMusicRelayer.js**(Control all platform transformer to process bot need info)  
