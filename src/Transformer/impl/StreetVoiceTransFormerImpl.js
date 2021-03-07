@@ -3,6 +3,7 @@ const TransFormer = require('../TransFormer.js');
 class StreetVoiceTransFormerImpl extends TransFormer {
     constructor() {
         super();
+        this.label = 'streetVoice';
     }
 
     urlToKeyword(url) {
@@ -23,6 +24,6 @@ class StreetVoiceTransFormerImpl extends TransFormer {
 }
 
 module.exports = {
-    StreetVoiceTransFormerImpl : StreetVoiceTransFormerImpl,
+    StreetVoiceTransFormerImpl: StreetVoiceTransFormerImpl,
     TransFormer: TransFormer
 };

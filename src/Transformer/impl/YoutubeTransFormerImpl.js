@@ -3,6 +3,7 @@ const TransFormer = require('../TransFormer.js');
 class YoutubeTransFormerImpl extends TransFormer {
     constructor() {
         super();
+        this.label = 'youtube';
     }
 
     urlToKeyword(url) {

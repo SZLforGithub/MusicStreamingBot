@@ -2,6 +2,7 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 class TransFormer {
     constructor() {
+        this.label = 'TransFormer';
     }
 
     urlToKeyword(url) {
@@ -14,11 +15,11 @@ class TransFormer {
 
     getResponse(method, url, data) {
         let xhr = new XMLHttpRequest;
-        xhr.open (method, url, false);
+        xhr.open(method, url, false);
         xhr.send(data);
         return xhr.responseText;
     }
-  
+
     canHandleUrl(url) {
         return false;
     }
