@@ -16,10 +16,8 @@ class SpotifyTransFormerImpl extends TransFormer {
         let accessToken = JSON.parse(super.getResponse('GET', encodeURI(`https://open.spotify.com/get_access_token?reason=transport&productType=web_player`), null))["accessToken"];
 
         let dataFromSpotifyAPI = JSON.parse(super.getResponse('GET', encodeURI(`https://api.spotify.com/v1/search?type=album&q=${keyword}&decorate_restrictions=false&best_match=true&include_external=audio&limit=10&market=TW`), null, `Bearer ${accessToken}`));
-
-        let bestMatchLink = dataFromSpotifyAPI["best_match"]["items"].length == 0 ?
-            '' :
-            dataFromSpotifyAPI["best_match"]["items"][0]["tracks"]["items"][0]["external_urls"]["spotify"];
+    
+        let bestMatchLink = dataFromSpotifyAPI["best_match"]?.["items"]?.[0]?.["tracks"]?.["items"]?.[0]?.["external_urls"]?.["spotify"];
 
         return bestMatchLink;
     }
