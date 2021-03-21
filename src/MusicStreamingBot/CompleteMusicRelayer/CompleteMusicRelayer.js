@@ -18,6 +18,16 @@ class CompleteMusicRelayer {
         this.transFormerList.push(new SpotifyTransFormerImpl());
     }
 
+    keywordToUrl(keyword) {
+        let relayInfo = new RelayInfo();
+        relayInfo.keyword = keyword;
+        relayInfo.outputMessage = keyword;
+
+        relayInfo = this.fillUrlInfo(relayInfo, null);
+
+        return relayInfo;
+    }
+
     processUrl(url) {
         let relayInfo = new RelayInfo();
         this.transFormerList.forEach(transFormer => {
@@ -26,10 +36,15 @@ class CompleteMusicRelayer {
             }
         });
 
-        relayInfo.outputMessage = relayInfo.keyword;
+        relayInfo = this.fillUrlInfo(relayInfo, url);
+
+        return relayInfo;
+    }
+
+    fillUrlInfo(relayInfo, url) {
         this.transFormerList.forEach(transFormer => {
             let streamUrl = '';
-            if (transFormer.canHandleUrl(url)) {
+            if (url != null && transFormer.canHandleUrl(url)) {
                 streamUrl = url;
             } else {
                 streamUrl = transFormer.keywordToUrl(relayInfo.keyword);
@@ -45,8 +60,8 @@ class CompleteMusicRelayer {
 
             relayInfo.outputMessage += '\n' + streamUrl;
             relayInfo.info[transFormer.label] = {
-                'url': streamUrl
-                , 'title': streamTitle
+                'url': streamUrl,
+                'title': streamTitle
             };
         });
 

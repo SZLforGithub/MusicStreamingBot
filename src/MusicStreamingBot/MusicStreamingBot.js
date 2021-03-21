@@ -28,7 +28,7 @@ class MusicStreamingBot {
           channel.send(this.completeMusicRelayer.processUrl(cmd[1]).outputMessage);
         }
         else if (cmd[0] == 'keyword') {
-          channel.send(this.completeMusicRelayer.keywordToUrl(message.content.substring('%%keyword'.length)));
+          channel.send(this.completeMusicRelayer.keywordToUrl(message.content.substring('%%keyword'.length)).outputMessage);
         } else if (cmd[0] == 'editInfo') {
           if (message.reference != null) {
             this.editMessage(message.reference.channelID, message.reference.messageID, message.content.substring('%%editInfo'.length));
