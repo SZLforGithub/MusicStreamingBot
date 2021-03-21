@@ -19,7 +19,7 @@ class TransFormer {
         xhr.withCredentials = true;
 
         if (accessToken) {
-            xhr.setRequestHeader("authorization", accessToken);
+            xhr.setRequestHeader('authorization', accessToken);
         }
 
         xhr.send(data);
