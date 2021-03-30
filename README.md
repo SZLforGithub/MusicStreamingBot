@@ -1,9 +1,9 @@
 # MusicStreamingBot
 
-## How to run docker
+## Start / Stop docker
 ```
-docker build -t music_streaming_bot .
-docker-compose up
+./builds/run-tasks.sh run # start
+./builds/run-tasks.sh down # stop
 ```
 
 ## Project Structure
