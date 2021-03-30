@@ -1,0 +1,29 @@
+version: '2.2'
+
+services: 
+    music_streaming_bot:
+        image: music_streaming_bot
+        build: 
+            context: ../../
+            dockerfile: builds/docker/Dockerfile
+        environment: 
+            NODE_ENV: production
+        ports: 
+            - 8080:8080
+        command: "npm run start"
+        volumes:
+            - ${PARENT_DIR}:/usr/src/app
+        depends_on:
+            - database
+
+    database:
+        image: postgres:13.2
+        environment:
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - 5432:5432
+        volumes:
+            - ${PARENT_DIR}/database/conf/initdb.d:/docker-entrypoint-initdb.d
+            - ${PARENT_DIR}/database/conf/postgres.conf:/etc/postgresql/postgresql.conf
+            - ${PARENT_DIR}/database/data:/var/lib/postgresql/data
