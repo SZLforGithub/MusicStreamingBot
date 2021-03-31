@@ -43,7 +43,11 @@
 ## config.json
 ```
 {
-   "token": "your bot token",
-   "webPort": " "
+   "token": "<your bot token>",
+   "webPort": "<your web port>"
+   "db": "<your db name>",
+   "dbUser": "<your db user>",
+   "dbPassword": "<your db password>",
+   "dbPort": "<your db port>"
 }
 ```
