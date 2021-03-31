@@ -11,7 +11,7 @@
 📦 builds  
  ┣ 📂 docker  
  ┃ ┣ 📜 **Dockerfile**(Build docker image)  
- ┃ ┗ 📜 **docker-compose.yaml**(Run docker containers) 
+ ┃ ┗ 📜 **docker-compose.yaml**(Run docker containers)  
  ┣ 📂 tasks  
  ┃ ┣ 📂 down  
  ┃ ┃ ┗ 📜 docker-down.sh  
