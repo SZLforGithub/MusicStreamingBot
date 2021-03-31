@@ -1,13 +1,19 @@
-const express = require('express');
+const auth = require('./src/config.json');
 
-// Constants
-const PORT = 8080;
+const { Client } = require('pg')
+const client = new Client(
+  {
+    user: auth.dbUser,
+    host: 'database',
+    database: auth.db,
+    password: auth.dbPassword,
+    port: auth.dbPort,
+  }
+)
 
-// App
-const app = express();
-app.get('/', function (req, res) {
-  res.send('Hello MusicStreamingBot!!!!\n');
-});
+client.connect()
 
-app.listen(PORT);
-console.log('Running on http://localhost:' + PORT);
+client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
+  console.log(err ? err.stack : res.rows[0].message) // Hello World!
+  client.end()
+})
