@@ -4,12 +4,10 @@ services:
     music_streaming_bot:
         image: music_streaming_bot
         build: 
-            context: ../../
-            dockerfile: builds/docker/Dockerfile
+            context: ${PARENT_DIR}
+            dockerfile: builds/docker/music_streaming_bot-Dockerfile
         environment: 
             NODE_ENV: production
-        ports: 
-            - 8080:8080
         command: "npm run start"
         volumes:
             - ${PARENT_DIR}:/usr/src/app
@@ -27,3 +25,15 @@ services:
             - ${PARENT_DIR}/database/conf/initdb.d:/docker-entrypoint-initdb.d
             - ${PARENT_DIR}/database/conf/postgres.conf:/etc/postgresql/postgresql.conf
             - ${PARENT_DIR}/database/data:/var/lib/postgresql/data
+
+    web:
+        image: golang:1.16.3-alpine
+        build:
+            context: ${PARENT_DIR}
+            dockerfile: builds/docker/web-Dockerfile
+        working_dir: /go/src
+        volumes:
+            - ${PARENT_DIR}/web:/go/src
+        ports:
+            - 8080:8080
+        command: "go run /go/src/main.go"

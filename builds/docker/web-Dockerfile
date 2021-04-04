@@ -1,0 +1,6 @@
+FROM golang:1.16.3-alpine
+ENV GO111MODULE="on"
+WORKDIR /go/src
+COPY ${PARENT_DIR}/web/go.mod /go/src/
+RUN go mod download
+COPY ${PARENT_DIR}/web/ /go/src/
