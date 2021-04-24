@@ -33,7 +33,8 @@ services:
             dockerfile: builds/docker/web-Dockerfile
         working_dir: /go/src
         volumes:
-            - ${PARENT_DIR}/web:/go/src
+            - ${PARENT_DIR}/web/src:/go/src
+            - ${PARENT_DIR}/web/pkg:/go/pkg
         ports:
             - 8080:8080
         command: "go run /go/src/main.go"
